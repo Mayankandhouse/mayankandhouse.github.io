@@ -8,7 +8,7 @@ sections.forEach(section => {
     const link = document.createElement('a');
     link.href = `#${id}`;
     link.textContent = section;
-    link.className = 'text-slate-500 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors dark:text-slate-400 dark:hover:text-indigo-400';
+    link.className = 'text-slate-500 hover:text-pink-600 px-3 py-2 rounded-md text-sm font-medium transition-colors dark:text-slate-400 dark:hover:text-pink-400';
     navContainer.appendChild(link);
 
     const mLink = document.createElement('a');
@@ -37,12 +37,12 @@ new Chart(ctxSkills, {
             label: 'Technical Proficiency',
             data: profileData.skills.data,
             fill: true,
-            backgroundColor: 'rgba(79, 70, 229, 0.2)',
-            borderColor: 'rgb(79, 70, 229)',
-            pointBackgroundColor: 'rgb(79, 70, 229)',
+            backgroundColor: 'rgba(236, 72, 153, 0.2)',
+            borderColor: 'rgb(236, 72, 153)',
+            pointBackgroundColor: 'rgb(236, 72, 153)',
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(79, 70, 229)'
+            pointHoverBorderColor: 'rgb(236, 72, 153)'
         }]
     },
     options: {
@@ -77,7 +77,7 @@ new Chart(ctxTrajectory, {
             {
                 label: 'Awards & Fellowships',
                 data: profileData.trajectory.awards,
-                backgroundColor: '#4f46e5',
+                backgroundColor: '#ec4899',
                 stack: 'Stack 0',
             },
             {
@@ -133,8 +133,8 @@ const detailBox = document.getElementById('topic-detail');
 profileData.researchTopics.forEach((topic, index) => {
     const btn = document.createElement('button');
     btn.textContent = topic.name;
-    const activeClass = 'bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500 dark:border-indigo-500';
-    const inactiveClass = 'bg-white text-slate-600 border-slate-300 hover:border-indigo-400 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-600 dark:hover:border-indigo-400';
+    const activeClass = 'bg-pink-600 text-white border-pink-600 dark:bg-pink-500 dark:border-pink-500';
+    const inactiveClass = 'bg-white text-slate-600 border-slate-300 hover:border-pink-400 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-600 dark:hover:border-pink-400';
 
     btn.className = `px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${index === 0 ? activeClass : inactiveClass}`;
 
@@ -147,7 +147,7 @@ profileData.researchTopics.forEach((topic, index) => {
         detailBox.classList.add('opacity-50');
         setTimeout(() => {
             detailTitle.textContent = topic.name;
-            detailDesc.innerHTML = `${topic.desc} <br><br><span class="text-xs font-bold uppercase text-indigo-400">Related Keywords:</span> ${topic.related.join(', ')}`;
+            detailDesc.innerHTML = `${topic.desc} <br><br><span class="text-xs font-bold uppercase text-pink-400">Related Keywords:</span> ${topic.related.join(', ')}`;
             detailBox.classList.remove('opacity-50');
         }, 200);
     });
@@ -158,17 +158,17 @@ profileData.researchTopics.forEach((topic, index) => {
 if (profileData.researchTopics.length > 0) {
     const t = profileData.researchTopics[0];
     detailTitle.textContent = t.name;
-    detailDesc.innerHTML = `${t.desc} <br><br><span class="text-xs font-bold uppercase text-indigo-400">Related Keywords:</span> ${t.related.join(', ')}`;
+    detailDesc.innerHTML = `${t.desc} <br><br><span class="text-xs font-bold uppercase text-pink-400">Related Keywords:</span> ${t.related.join(', ')}`;
 }
 
 // --- PUBLICATIONS RENDERER ---
 const pubContainer = document.getElementById('publications-container');
 profileData.publications.forEach(pub => {
     const pubDiv = document.createElement('div');
-    pubDiv.className = 'group relative pl-4 border-l-2 border-indigo-300 hover:border-indigo-600 transition-colors mb-6 last:mb-0 dark:border-indigo-700 dark:hover:border-indigo-400';
+    pubDiv.className = 'group relative pl-4 border-l-2 border-pink-300 hover:border-pink-600 transition-colors mb-6 last:mb-0 dark:border-pink-700 dark:hover:border-pink-400';
     pubDiv.innerHTML = `
         <div class="flex flex-col sm:flex-row justify-between sm:items-baseline">
-            <h4 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors cursor-pointer dark:text-slate-100 dark:group-hover:text-indigo-400">
+            <h4 class="text-lg font-bold text-slate-900 group-hover:text-pink-600 transition-colors cursor-pointer dark:text-slate-100 dark:group-hover:text-pink-400">
                 ${pub.title}
             </h4>
             <span class="text-sm text-slate-400 font-mono mt-1 sm:mt-0 whitespace-nowrap ml-2 dark:text-slate-500">${pub.year}</span>
@@ -176,7 +176,7 @@ profileData.publications.forEach(pub => {
         <p class="text-slate-600 mt-1 text-sm dark:text-slate-400">Authored by <strong>${pub.authors}</strong></p>
         <div class="flex items-center gap-2 mt-1">
             <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded dark:bg-slate-700 dark:text-slate-300">${pub.journal}</span>
-            <span class="text-xs text-indigo-500 dark:text-indigo-400">${pub.type}</span>
+            <span class="text-xs text-pink-500 dark:text-pink-400">${pub.type}</span>
         </div>
         <p class="text-slate-500 mt-2 text-sm italic dark:text-slate-500">${pub.desc}</p>
     `;
@@ -202,13 +202,13 @@ function renderTimeline(filter) {
         const dot = document.createElement('div');
         dot.className = `hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-2 border-white shadow-sm z-10 dark:border-slate-800
             ${item.type === 'award' ? 'bg-amber-400' :
-                item.type === 'education' ? 'bg-indigo-600' :
+                item.type === 'education' ? 'bg-pink-600' :
                     item.type === 'pub' ? 'bg-emerald-500' : 'bg-slate-400'}`;
 
         const card = document.createElement('div');
         card.className = `w-full md:w-5/12 bg-white p-5 rounded-lg shadow-sm border-l-4 card-hover dark:bg-slate-800 dark:border-opacity-50
             ${item.type === 'award' ? 'border-amber-400' :
-                item.type === 'education' ? 'border-indigo-600' :
+                item.type === 'education' ? 'border-pink-600' :
                     item.type === 'pub' ? 'border-emerald-500' : 'border-slate-400'}
             ${isLeft ? 'md:mr-auto' : 'md:ml-auto'}`;
 
@@ -228,7 +228,7 @@ function renderTimeline(filter) {
                 <span class="text-xs font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-100 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-400">${item.year}</span>
             </div>
             <h4 class="font-bold text-slate-800 text-lg leading-tight mb-1 dark:text-slate-200">${item.title}</h4>
-            <div class="text-xs text-indigo-600 font-semibold mb-2 uppercase tracking-wide dark:text-indigo-400">
+            <div class="text-xs text-pink-600 font-semibold mb-2 uppercase tracking-wide dark:text-pink-400">
                 <i class="fas fa-map-marker-alt mr-1"></i>${item.location}
             </div>
             <p class="text-slate-600 text-sm leading-relaxed dark:text-slate-400">${item.desc}</p>
@@ -244,7 +244,7 @@ window.filterTimeline = function (type) {
     const buttons = document.querySelectorAll('#timeline button');
     buttons.forEach(b => {
         if (b.textContent.toLowerCase().includes(type) || (type === 'all' && b.textContent === 'All')) {
-            b.className = 'px-3 py-1 text-sm font-medium rounded-md bg-indigo-100 text-indigo-700 transition-colors dark:bg-indigo-900 dark:text-indigo-200';
+            b.className = 'px-3 py-1 text-sm font-medium rounded-md bg-pink-100 text-pink-700 transition-colors dark:bg-pink-900 dark:text-pink-200';
         } else {
             b.className = 'px-3 py-1 text-sm font-medium rounded-md text-slate-600 hover:bg-slate-50 transition-colors dark:text-slate-400 dark:hover:bg-slate-800';
         }
@@ -258,11 +258,11 @@ renderTimeline('all');
 const teachingGrid = document.getElementById('teaching-grid');
 profileData.teaching.forEach(course => {
     const div = document.createElement('div');
-    div.className = 'bg-white p-4 rounded-lg shadow-sm border border-slate-200 hover:border-indigo-300 transition-colors dark:bg-slate-800 dark:border-slate-700 dark:hover:border-indigo-700';
+    div.className = 'bg-white p-4 rounded-lg shadow-sm border border-slate-200 hover:border-pink-300 transition-colors dark:bg-slate-800 dark:border-slate-700 dark:hover:border-pink-700';
     div.innerHTML = `
         <div class="flex justify-between items-center mb-2">
             <span class="text-xs font-mono text-slate-400">${course.code}</span>
-            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-200">${course.term}</span>
+            <span class="text-xs font-bold text-pink-600 bg-pink-50 px-2 py-0.5 rounded dark:bg-pink-900 dark:text-pink-200">${course.term}</span>
         </div>
         <h4 class="font-bold text-slate-800 mb-1 line-clamp-2 h-12 dark:text-slate-200">${course.name}</h4>
         <p class="text-xs text-slate-500 mt-2 dark:text-slate-400">Under ${course.prof}</p>
