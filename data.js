@@ -12,8 +12,8 @@ const profileData = {
         schools: [0, 1, 1, 2, 1, 1, 0],
         // Pubs: 2020(1), 2023(1), 2025(1)
         pubs: [0, 0, 1, 0, 1, 0, 1],
-         // Teaching: 2019(1), 2020(2), 2023(1), 2024(1)
-        teaching: [0, 1, 2, 0, 1, 1, 0] 
+        // Teaching: 2019(1), 2020(2), 2023(1), 2024(1)
+        teaching: [0, 1, 2, 0, 1, 1, 0]
     },
     researchTopics: [
         {
@@ -75,7 +75,7 @@ const profileData = {
         { year: 2024, type: 'experience', title: 'Nordita Workshop', location: 'Sweden', desc: 'Measuring and Manipulating Non-Equilibrium Systems.' },
         { year: 2024, type: 'award', title: 'Infosys Foundation Travel Award', location: 'India', desc: 'Grant to support research travel.' },
         { year: 2023, type: 'pub', title: 'Publication: Spontaneous Collective Transport', location: 'Physica A', desc: 'Published "Spontaneous collective transport in a heat-bath".' },
-        { year: 2023, type: 'experience', title: 'Research Visit', location: 'Japan', desc: 'International research visit focusing on non-equilibrium statistical physics.' }, 
+        { year: 2023, type: 'experience', title: 'Research Visit', location: 'Japan', desc: 'International research visit focusing on non-equilibrium statistical physics.' },
         { year: 2022, type: 'experience', title: 'School on Stochastic Thermodynamics', location: 'IIT Bombay', desc: 'Specialized training in biological applications.' },
         { year: 2022, type: 'experience', title: 'Complex Systems School', location: 'ICTS Bangalore', desc: 'School on Statistical Physics of Complex Systems.' },
         { year: 2020, type: 'pub', title: 'Publication: Heat to Work Inchworm', location: 'Physica Scripta', desc: 'Published "Conversion of heat to work: An efficient inchworm".' },
@@ -83,6 +83,62 @@ const profileData = {
         { year: 2019, type: 'education', title: 'PhD Commencement', location: 'IISER Pune', desc: 'Started PhD after completing MSc portion of Integrated program.' },
         { year: 2019, type: 'award', title: 'Institute Fellowship', location: 'IISER Pune', desc: 'Recipient of fellowship for Integrated Ph.D. (2019-2023).' },
         { year: 2016, type: 'award', title: 'Summer Research Fellowship', location: 'IISc Bangalore', desc: 'IASC-INSA-NASI Summer Fellow.' }
+    ],
+    thesisWork: [
+        {
+            paperTitle: "Spontaneous collective transport in a heat-bath",
+            desc: "Visualizations for the 2023 Physica A paper. Investigating conditions under which collective motion emerges spontaneously.",
+            videos: [
+                {
+                    title: "Emergent Flocking",
+                    desc: "Simulation showing emergent flocking behavior.",
+                    videoUrl: "https://www.youtube.com/embed/raPftgQ-RPU",
+                    tags: ["Flocking", "Simulation"]
+                },
+                {
+                    title: "Swarming: Ferromagnetic-like Alignment",
+                    desc: "Demonstration of swarming behavior with ferromagnetic-like alignment.",
+                    videoUrl: "https://www.youtube.com/embed/_6jkxK9bgRo?start=142",
+                    tags: ["Swarming", "Alignment"]
+                },
+                {
+                    title: "Crystal-like Structures with Coherent Rotation",
+                    desc: "Formation of crystal-like structures exhibiting coherent rotation.",
+                    videoUrl: "https://www.youtube.com/embed/GFWTYNqKp5s",
+                    tags: ["Crystal Structure", "Rotation"]
+                },
+                {
+                    title: "Rotating Triangular Clusters",
+                    desc: "Chiral asymmetry arising from damping asymmetry.",
+                    videoUrl: "https://www.youtube.com/embed/CThM4UdfJKM?start=81",
+                    tags: ["Clusters", "Chiral Asymmetry"]
+                },
+                {
+                    title: "Anti-ferromagnetic-like Ordered Dimers",
+                    desc: "Formation of ordered dimers with anti-ferromagnetic-like properties.",
+                    videoUrl: "https://www.youtube.com/embed/nl77PRMKb98",
+                    tags: ["Dimers", "Ordering"]
+                },
+                {
+                    title: "Emergent Rotating Clusters",
+                    desc: "Dynamics between vortex and swarm states.",
+                    videoUrl: "https://www.youtube.com/embed/RsPIN-ZHobs",
+                    tags: ["Vortex", "Swarm"]
+                }
+            ]
+        },
+        {
+            paperTitle: "Entropic pulling and diffusion diode",
+            desc: "Visualizations for the 2025 Physics Letters A paper.",
+            videos: [
+                {
+                    title: "Entropic Pulling Visualized",
+                    desc: "An experimental setup demonstrating entropic pulling.",
+                    videoUrl: "https://www.youtube.com/embed/c46BubA9Nkg",
+                    tags: ["Stochastic", "Entropic Force"]
+                }
+            ]
+        }
     ],
     teaching: [
         { code: 'PH1113', name: 'Introductory Mechanics', term: 'Aug 2019', prof: 'Prof. S. Ananth' },

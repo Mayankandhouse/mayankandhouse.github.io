@@ -1,5 +1,5 @@
 // --- NAVIGATION LOGIC ---
-const sections = ['Overview', 'Analytics', 'Research', 'Timeline', 'Teaching'];
+const sections = ['Overview', 'Analytics', 'Research', 'Thesis', 'Timeline', 'Teaching'];
 const navContainer = document.getElementById('desktop-nav');
 const mobileNavContainer = document.getElementById('mobile-nav-items');
 
@@ -253,6 +253,76 @@ window.filterTimeline = function (type) {
 }
 
 renderTimeline('all');
+
+// --- THESIS GRID GENERATION ---
+// --- THESIS GRID GENERATION ---
+const thesisSection = document.getElementById('thesis-grid');
+if (thesisSection && profileData.thesisWork) {
+    thesisSection.className = 'space-y-12'; // Use vertical spacing instead of grid
+
+    profileData.thesisWork.forEach(paper => {
+        // 1. Create Paper Header
+        const paperBlock = document.createElement('div');
+        paperBlock.className = 'bg-slate-50 rounded-xl p-6 border border-slate-200 dark:bg-slate-800/50 dark:border-slate-700';
+
+        const headerHtml = `
+            <div class="mb-6 border-b border-slate-200 pb-4 dark:border-slate-700">
+                <h3 class="text-xl font-bold text-slate-900 mb-2 dark:text-white">${paper.paperTitle}</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">${paper.desc}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+               <!-- Videos for this paper go here -->
+            </div>
+        `;
+        paperBlock.innerHTML = headerHtml;
+        const videoGrid = paperBlock.querySelector('.grid');
+
+        // 2. Render Videos for this Paper
+        paper.videos.forEach(video => {
+            const vidDiv = document.createElement('div');
+            vidDiv.className = 'group bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-all dark:bg-slate-800 dark:border-slate-600';
+
+            // Video/Visual Placeholder
+            let visualContent = '';
+            const isLocalVideo = video.videoUrl && (video.videoUrl.endsWith('.mp4') || video.videoUrl.endsWith('.webm'));
+            const isEmbed = video.videoUrl && (video.videoUrl.includes('embed') || video.videoUrl.includes('youtube') || video.videoUrl.includes('vimeo'));
+
+            if (isLocalVideo) {
+                visualContent = `
+                    <video controls class="w-full h-48 object-cover bg-black">
+                        <source src="${video.videoUrl}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>`;
+            } else if (isEmbed) {
+                visualContent = `<iframe src="${video.videoUrl}" title="${video.title}" class="w-full h-48 object-cover" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+                // Placeholder
+                visualContent = `
+                    <div class="w-full h-48 bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition-colors dark:bg-slate-700 dark:group-hover:bg-slate-600">
+                        <i class="fas fa-play-circle text-4xl text-pink-400 group-hover:text-pink-600 transition-colors"></i>
+                    </div>`;
+            }
+
+            const tagsHtml = video.tags.map(tag =>
+                `<span class="text-xs font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded dark:bg-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600">${tag}</span>`
+            ).join('');
+
+            vidDiv.innerHTML = `
+                ${visualContent}
+                <div class="p-4">
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        ${tagsHtml}
+                    </div>
+                    <h4 class="font-bold text-md text-slate-900 mb-1 group-hover:text-pink-600 transition-colors dark:text-white leading-tight">${video.title}</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2">${video.desc}</p>
+                </div>
+            `;
+            videoGrid.appendChild(vidDiv);
+        });
+
+        thesisSection.appendChild(paperBlock);
+    });
+}
 
 // --- TEACHING GRID ---
 const teachingGrid = document.getElementById('teaching-grid');
